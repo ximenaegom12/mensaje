@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para mi Leito</title>
+<style>
+   body {
+     margin: 0;
+     background: linear-gradient(to top, #ffe6f0, #f9f1ff);
+     overflow: hidden;
+     font-family: 'Comic Sans MS', cursive;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     flex-direction: column;
+   }
+   .heart {
+     position: absolute;
+     width: 20px;
+     height: 20px;
+     background-color: red;
+     transform: rotate(45deg);
+     animation: float 6s infinite ease-in;
+   }
+   .heart::before,
+   .heart::after {
+     content: '';
+     position: absolute;
+     width: 20px;
+     height: 20px;
+     background-color: red;
+     border-radius: 50%;
+   }
+   .heart::before {
+     top: -10px;
+     left: 0;
+   }
+   .heart::after {
+     left: -10px;
+     top: 0;
+   }
+   @keyframes float {
+     0% {
+       transform: translateY(0) rotate(45deg);
+       opacity: 1;
+     }
+     100% {
+       transform: translateY(-800px) rotate(45deg);
+       opacity: 0;
+     }
+   }
+   .text-box {
+     background-color: white;
+     padding: 30px;
+     border-radius: 20px;
+     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+     text-align: center;
+     max-width: 400px;
+   }
+   .text-box h1 {
+     color: #d63384;
+     font-size: 28px;
+   }
+   .text-box p {
+     font-size: 16px;
+     color: #555;
+   }
+   .play-btn {
+     margin-top: 20px;
+     background-color: #d63384;
+     color: white;
+     border: none;
+     padding: 10px 20px;
+     border-radius: 25px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: transform 0.2s ease;
+   }
+   .play-btn:hover {
+     transform: scale(1.05);
+   }
+   .plane {
+     position: absolute;
+     top: 80%;
+     left: -100px;
+     width: 80px;
+     animation: fly 10s linear infinite;
+   }
+   @keyframes fly {
+     0% { transform: translateX(0); }
+     100% { transform: translateX(120vw); }
+   }
+</style>
+</head>
+<body>
+<!-- Corazoncitos flotando -->
+<script>
+   for (let i = 0; i < 30; i++) {
+     let heart = document.createElement('div');
+     heart.className = 'heart';
+     heart.style.left = Math.random() * 100 + 'vw';
+     heart.style.animationDelay = Math.random() * 5 + 's';
+     document.body.appendChild(heart);
+   }
+</script>
+<!-- Avioncito -->
+<img src="https://cdn-icons-png.flaticon.com/512/681/681494.png" class="plane" />
+<!-- Caja de texto y botón -->
+<div class="text-box">
+<h1>Para ti, mi Leito ✈️💗</h1>
+<p>Cerca o lejos, tú tienes mi amor, mi corazón, mi alma...<br>
+   Nunca me arrepentiré de esperarte, porque el día que lo tengamos todo, sabremos que valió la pena.<br><br>
+   Contigo aprendí que no se trata de buscar a alguien... sino de saber que estás justo donde siempre debiste estar 💞</p>
+<button class="play-btn" onclick="playSong()">💗 Reproducir nuestra canción</button>
+<audio id="miCancion" src="cancion.mp3"></audio>
+</div>
+<script>
+   function playSong() {
+     const audio = document.getElementById("miCancion");
+     audio.play();
+   }
+</script>
+</body>
+</html>
